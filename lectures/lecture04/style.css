@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* GENERAL HTML/BODY */
+body {
+    width: 100%;
+    padding: 0 24px;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-family: "Urbanist", Arial, Helvetica, sans-serif;
+}
+
+li {
+    font-family: "Urbanist", Arial, Helvetica, sans-serif;
+}
+
+/* GENERAL SECTIONS */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+
+footer {
+    width: 100%;
+}
+
+/*  */
