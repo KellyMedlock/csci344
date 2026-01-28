@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Barriecito", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Your code here */
+header {
+    background-color: gold;
+    padding: 30px 40px;
+}
+
+main {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    background-color: #EEE;
+}
+
+section {
+    width: 30%;
+    background-color: #FFF;
+    border: 1px solid #33333340;
+}
+
+section img {
+    width: 100%;
+}
+
+p {
+    margin: 16px;
+}
+
+section:hover {
+    transform: scale(1.1);
+    border-color: #333;
+}
