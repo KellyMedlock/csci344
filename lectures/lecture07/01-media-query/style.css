@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header, main, footer {
+    border: solid 2px coral;
+    padding: 10px;
+}
+
+header {
+    height: 20vh;
+}
+
+main {
+    min-height: 70vh;
+}
+
+footer {
+    height: 10vh;
+}
+
+@media screen and (max-width: 800px) {
+    /* Your code here! */
+    header {
+        display: none;
+        background-color: black;
+        color: white;
+    }
+
+    main {
+        background-color: gray;
+        height: 90vh;
+    }
+
+    footer {
+        background-color: coral;
+        color: white;
+    }
+}
+
