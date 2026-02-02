@@ -1,3 +1,31 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+section {
+    border: 1px solid gray;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 10px;
+}
+
+section div {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+section img {
+    grid-column: 2 / 3;
+    justify-self: flex-end;
+    align-self: center;
+}

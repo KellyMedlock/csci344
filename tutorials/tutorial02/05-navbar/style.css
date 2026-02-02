@@ -9,4 +9,56 @@ body * {
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    padding-top: 72.5px;
+}
+
+a {
+    text-decoration: none;
+    color: dimgray;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 5px 20px;
+    border: 1px solid gray;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav h1 {
+    border: 1px solid gray;
+    padding: 0 5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    border: 1px solid gray;
+    padding: 5px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+nav ul li {
+    border: 1px solid gray;
+    padding: 10px 5px;
+}
+
+nav ul li a {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+section {
+  min-height: 50vh;
+  padding: 30px;
+  border: solid 1px #000;
 }

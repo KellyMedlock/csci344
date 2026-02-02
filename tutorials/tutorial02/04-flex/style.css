@@ -12,3 +12,27 @@ body {
 }
 
 /* create additional rules below:  */
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+section#home {
+    background-color: aqua;
+}
+
+section#bio {
+    background-color: aquamarine;
+}
+
+section#portfolio {
+    background-color: blue;
+}
+
+section#contact {
+    background-color: cadetblue;
+}
