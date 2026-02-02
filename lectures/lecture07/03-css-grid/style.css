@@ -33,24 +33,32 @@ body {
 /* Task 3 */
 
 .container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2vw;
 }
 
 header {
+  grid-column: 1 / 4;
 }
 
 nav {
 }
 
 aside {
+  grid-area: 2 / 3 / 4 / 4;
 }
 
 section {
+  grid-area: 2 / 1 / 4 / 2;
 }
 
 main {
+  min-height: 70vh;
 }
 
 footer {
+  grid-column: 1 / 4;
 }
 
 
@@ -59,5 +67,9 @@ footer {
 }
 
 
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
 }
