@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* GENERAL STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    color: #000;
+    background-color: #ccc;
+    font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+}
+
+/* HEADER STYLES */
+header {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+}
+
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
+header .signout {
+    color: rgb(52, 71, 213);
+}
+
+header .headerContainer {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 0.2rem;
+    padding: .5rem 1rem;
+}
+
+header .headerContainer .logowrapper {
+    grid-column: 1 / 8;
+    padding-left: 1rem;
+}
+
+header .headerContainer nav {
+    grid-column: 8 / 17;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+header .headerContainer nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* MAIN STYLES */
+main {
+    width: 100%;
+    padding-top: 48px;
+    padding-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    justify-items: end;
+}
+
+/* RECOMMENDATIONS STYLES */
+section.recommendationsCont {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    /* background-color: #fff; */
+    position: fixed;
+    top: calc(48px + 2rem);
+    left: calc(60% + 1rem);   
+}
+
+section.recommendationsCont .profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+section.recommendationsCont .profile img {
+    border-radius: 50px;
+}
+
+section.recommendationsCont .recommendations {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+section.recommendationsCont .recommendations h2 {
+    margin-bottom: 0.5rem;
+}
+
+section.recommendationsCont .recommendations .card {
+    display: grid;
+    grid-template-columns: 80px auto 80px;
+    align-items: center;
+    justify-content: start;
+}
+
+section.recommendationsCont .recommendations .card img {
+    border-radius: 25px;
+}
+
+section.recommendationsCont .recommendations .card button {
+    border: none;
+    background-color: transparent;
+    color: rgb(52, 71, 213);
+}
+
+section.recommendationsCont .recommendations .card .info h2 {
+    line-height: 1.5rem;
+    margin-bottom: 0;
+}
+
+section.recommendationsCont .recommendations .card .info h3 {
+    font-weight: 500;
+    color: #888;
+}
+
+/* CONTENT STYLES */
+section.contentContainer {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* STORY STYLES */
+section.contentContainer .storyContainer {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    gap: 1.2rem;
+    grid-column: 1 / 2;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+section.contentContainer .storyContainer .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+section.contentContainer .storyContainer .card img {
+    border-radius: 30px;
+    border: 1.5px solid #888;
+}
+
+/* CONTENT CARDS STYLES */
+
+section.contentContainer .contentCard {
+    width: 100%;
+    background-color: #fff;
+    padding: 0.2rem;
+}
+
+section.contentContainer .contentCard a {
+    text-decoration: none;
+    color: #000;
+}
+
+section.contentContainer .contentCard button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+section.contentContainer .contentCard .contentHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 18px;
+}
+
+section.contentContainer .contentCard .contentHeader button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+}
+
+section.contentContainer .contentCard .image {
+    width: 100%;
+}
+
+section.contentContainer .contentCard .image img {
+    width: 100%;
+}
+
+section.contentContainer .contentCard .interfaceContainer {
+    width: 100%;
+    padding: 0.4rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface {
+    width: 100%;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceBtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceBtns i {
+    font-size: 1.5rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceBtns .btns {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 0.4rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceLikes button {
+    margin-left: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceCaption {
+    padding: 0.4rem;
+    line-height: 1.3rem;
+    padding-bottom: 0;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceCaption a {
+    margin-left: 0.4rem;
+    margin-right: .4rem;
+    font-weight: 700;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceCaption button {
+    margin-left: 0.4rem;
+    margin-right: .4rem;
+    color: rgb(52, 71, 213);
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceComments {
+    padding: 0.4rem;
+    line-height: 1.3rem;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceComments a {
+    margin-left: 0.4rem;
+    margin-right: .4rem;
+    font-weight: 700;
+}
+
+section.contentContainer .contentCard .interfaceContainer .interface .interfaceComments .timestamp {
+    color: #888;
+}
+
+section.contentContainer .contentCard .interfaceContainer .commentInputContainer {
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #888;
+    padding-bottom: 0;
+}
+
+section.contentContainer .contentCard .interfaceContainer .commentInputContainer .commentInput {
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .commentInputContainer .commentInput i {
+    font-size: 1.5rem;
+}
+
+section.contentContainer .contentCard .interfaceContainer .commentInputContainer .commentInput input {
+    border: none;
+    align-self: stretch;
+    font-size: 1.1rem;
+    width: 40vw;
+}
+
+section.contentContainer .contentCard .interfaceContainer .commentInputContainer .commentInput input:focus {
+    border: none;
+    outline: none;
+}
+
+section.contentContainer .contentCard .interfaceContainer .commentInputContainer>button {
+    font-size: 1.1rem;
+    color: rgb(52, 71, 213);
+    margin-right: 0.4rem;
+}

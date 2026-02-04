@@ -136,7 +136,7 @@ main section.tutorials ul {
     gap: 0.4rem;
 }
 
-main section.tutorials ul li {
+main section.tutorials ul li a {
     padding: 50px 80px;
     border: 1px solid black;
     border-radius: 1rem;
@@ -147,7 +147,7 @@ main section.tutorials ul li {
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
-main section.tutorials ul li:hover {
+main section.tutorials ul li a:hover {
     transform: scaleY(10px);
     box-shadow: 0 .1rem .2rem rgba(0, 0, 0, 1);
 }
