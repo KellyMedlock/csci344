@@ -123,11 +123,12 @@ main section.lectures {
     min-height: 60vh;
     border: 1px solid black;
     border-radius: 2rem;
-    margin-bottom: 20vh;
+    /* margin-bottom: 20vh; */
 }
 
 main section.tutorials {
     grid-column: 1 / 17;
+    padding-top: 20vh;
 }
 
 main section.tutorials ul {
