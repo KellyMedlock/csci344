@@ -10,7 +10,7 @@
 body {
     width: 100%;
     color: #000;
-    background-color: #ccc;
+    background-color: #DDD;
     font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 
@@ -91,6 +91,7 @@ section.recommendationsCont .profile {
 
 section.recommendationsCont .profile img {
     border-radius: 50px;
+    border: 1.5px solid #888;
 }
 
 section.recommendationsCont .recommendations {
@@ -112,6 +113,7 @@ section.recommendationsCont .recommendations .card {
 
 section.recommendationsCont .recommendations .card img {
     border-radius: 25px;
+    border: 1.5px solid #888;
 }
 
 section.recommendationsCont .recommendations .card button {
@@ -127,7 +129,7 @@ section.recommendationsCont .recommendations .card .info h2 {
 
 section.recommendationsCont .recommendations .card .info h3 {
     font-weight: 500;
-    color: #888;
+    color: #5c5c5c;
 }
 
 /* CONTENT STYLES */
@@ -273,7 +275,7 @@ section.contentContainer .contentCard .interfaceContainer .interface .interfaceC
 }
 
 section.contentContainer .contentCard .interfaceContainer .interface .interfaceComments .timestamp {
-    color: #888;
+    color: #666;
 }
 
 section.contentContainer .contentCard .interfaceContainer .commentInputContainer {
