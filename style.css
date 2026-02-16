@@ -168,3 +168,19 @@ main section.homework {
 main section.homework ul li a {
     font-size: 2rem;
 }
+
+main section.exams {
+    grid-column: 1 / 17;
+    height: calc(1vh * 100);
+    max-height: calc(1vw * 50);
+    min-height: calc(1vw * 30);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+    margin-top: 20vh;
+}
+
+main section.exams ul li a {
+    font-size: 2rem;
+}
