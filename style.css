@@ -126,6 +126,56 @@ main section.lectures {
     /* margin-bottom: 20vh; */
 }
 
+section.lectures .carouselContainer {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+section.lectures .carouselContainer .slide {
+    /* display: none; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.lectures .carouselContainer a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.lectures .carouselContainer .prev, 
+section.lectures .carouselContainer .next {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: auto;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding: .75rem;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+section.lectures .carouselContainer .next {
+    right: 0;
+}
+
+section.lectures .carouselContainer .prev:hover, 
+section.lectures .carouselContainer .next:hover {  
+    background-color: #000000aa;
+    color: white;
+}
+
 main section.tutorials {
     grid-column: 1 / 17;
     padding-top: 20vh;

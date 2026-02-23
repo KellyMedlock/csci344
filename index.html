@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <script src="main.js" defer></script>
 
         <title>CSCI WebDev 344</title>
     </head>
@@ -33,29 +34,38 @@
 
         <main>
             <section class="lectures">
-                <ul class="navList">
-                    <li class="navLink">
+                <div class="carouselContainer">
+                    <div class="slide">
                         <a href="lectures/lecture04/index.html" target="_blank">Lecture 04</a>
-                    </li>
-                    <li class="navLink">
+                    </div>
+                    <div class="slide">
                         <a href="lectures/lecture06/index.html" target="_blank">Lecture 06</a>
-                    </li>
-                    <li class="navLink">
+                    </div>
+                    <div class="slide">
                         <a href="lectures/lecture07/01-media-query/mq.html" target="_blank">Lecture 07: Media Query</a>
-                    </li>
-                    <li class="navLink">
+                    </div>
+                    <div class="slide">
                         <a href="lectures/lecture07/02-flexbox/index.html" target="_blank">Lecture 07: Flexbox</a>
-                    </li>
-                    <li class="navLink">
+                    </div>
+                    <div class="slide">
                         <a href="lectures/lecture07/03-css-grid/layout.html" target="_blank">Lecture 07: CSS Grid</a>
-                    </li>
-                    <li class="navLink" style="display: none;">
+                    </div>
+                    <div class="slide">
                         <a href="lectures/lecture07/04-sticky-menu/index.html" target="_blank">Lecture 07: Sticky Menu</a>
-                    </li>
-                    <li class="navLink" style="display: none;">
-                        <a href="lectures/lecture07/05-hw02-starter-code/index.html" target="_blank">Lecture 07: Hw2 Starter</a>
-                    </li>
-                </ul><!--END NAVLIST-->
+                    </div>
+                    <div class="slide">
+                        <a href="lectures/lecture07/05-hw02-starter-code/index.html" target="_blank">Lecture 07: HW 2 Starter</a>
+                    </div>
+                    <div class="slide">
+                        <a href="lectures/lecture09/01-warmup/index.html" target="_blank">Lecture 09: Web Canvas</a>
+                    </div>
+                    <div class="slide">
+                        <a href="lectures/js-functions-practice-dom/index.html" target="_blank">Lecture ??: ToDo List Javascript</a>
+                    </div>
+
+                    <button type="button" class="next" onclick="plusSlides(1)">></button>
+                    <button type="button" class="prev" onclick="plusSlides(-1)"><</button>
+                </div> <!-- END CAROUSEL CONTAINER-->
             </section> <!--END LECTURES-->
 
             <section class="tutorials" id="tutorials">
