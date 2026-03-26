@@ -1,0 +1,22 @@
+.profile {
+    width: 200px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    color: black;
+    overflow: hidden;
+}
+
+.profile:hover {
+    transform: scale(1.1);
+}
+
+.profile img {
+    width: 100%;
+}
