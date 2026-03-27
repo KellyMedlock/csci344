@@ -1,0 +1,22 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    min-height: 250px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.cardName {
+    padding: 20px;
+    margin: 0;
+}
+
+.cardImg {
+    width: 100%;
+}
+
+.cardDescription {
+    padding: 20px;
+    margin: 0;
+}
