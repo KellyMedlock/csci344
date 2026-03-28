@@ -42,13 +42,12 @@ async function showPosts() {
 // CREATES A HTML ELEMENT FOR POSTS
 function postToHTML(post) {
   return `
-        <section class="bg-white border mb-10">
+        <section class="bg-white border mb-10" id="post-${post.id}">
             <div class="p-4 flex justify-between">
                 <h3 class="text-lg font-Comfortaa font-bold">${post.user.username}</h3>
                 <button class="icon-button"><i class="fas fa-ellipsis-h"></i></button>
             </div>
-            <img src="${post.image_url}" alt="placeholder image" width="300" height="300"
-                class="w-full bg-cover">
+            <img src="${post.image_url}" alt="post image" width="300" height="300" class="w-full bg-cover">
             <div class="p-4">
                 <div class="flex justify-between text-2xl mb-3">
                     <div>
@@ -81,9 +80,6 @@ function postToHTML(post) {
     `;
 }
 
-// GET AND ADD COMMENTS TO POST
-function createComments(post) {}
-
 // GET API TOKEN
 async function getToken() {
   return await getAccessToken(rootURL, username, password);
@@ -105,14 +101,14 @@ function showNav() {
 // TO SHOW BOOKMARK STATUS
 function getBookmarkButton(post) {
   if (post.current_user_bookmark_id !== undefined) {
-    return `<button onclick="unBookmark(${post.current_user_bookmark_id})"><i class="fas fa-bookmark"></i></button>`;
+    return `<button onclick="unBookmark(${post.id}, ${post.current_user_bookmark_id})" aria-label="bookmark button"><i class="fas fa-bookmark"></i></button>`;
   } else {
-    return `<button onclick="bookmark(${post.id})"><i class="far fa-bookmark"></i></button>`;
+    return `<button onclick="bookmark(${post.id})" aria-label="bookmark button"><i class="far fa-bookmark"></i></button>`;
   }
 }
 
 // TO UNBOOKMARK A POST
-async function unBookmark(bookmarkID) {
+async function unBookmark(postID, bookmarkID) {
   console.log("delete a bookmark...");
 
   const response = await fetch(`${rootURL}/api/bookmarks/${bookmarkID}`, {
@@ -124,6 +120,8 @@ async function unBookmark(bookmarkID) {
   });
   const data = await response.json();
   console.log(data);
+
+  reloadPost(postID);
 }
 
 // TO BOOKMARK A POST
@@ -147,6 +145,8 @@ async function bookmark(postID) {
   });
   const data = await response.json();
   console.log(data);
+
+  reloadPost(postID);
 }
 
 // GET COMMENTS FOR POSTS
@@ -167,8 +167,8 @@ function getComments(post) {
 
 // RENDER A COMMENT TO HTML
 function commentToHTML(comment) {
-  console.log(comment.user.username);
-  console.log(comment.text);
+  // console.log(comment.user.username);
+  // console.log(comment.text);
   return `
     <p class="text-sm mb-3">
       <strong>${comment.user.username}</strong>
@@ -180,9 +180,9 @@ function commentToHTML(comment) {
 // SHOW LIKED STATUS
 function getLikeButton(post) {
   if (post.current_user_like_id !== undefined) {
-    return `<button onclick="unlikePost(${post.current_user_like_id})"><i class="fas fa-heart text-red-600"></i></button>`;
+    return `<button onclick="unlikePost(${post.id}, ${post.current_user_like_id})" aria-label="like button"><i class="fas fa-heart text-red-600"></i></button>`;
   } else {
-    return `<button onclick="likePost(${post.id})"><i class="far fa-heart"></i></button>`;
+    return `<button onclick="likePost(${post.id})" aria-label="like button"><i class="far fa-heart"></i></button>`;
   }
 }
 
@@ -204,10 +204,12 @@ async function likePost(postID) {
   });
   const data = await response.json();
   console.log(data);
+
+  reloadPost(postID);
 }
 
 // REMOVE A LIKE FROM A POST
-async function unlikePost(likeID) {
+async function unlikePost(postID, likeID) {
   console.log("Unliked a post");
 
   const response = await fetch(`${rootURL}/api/likes/${likeID}`, {
@@ -219,6 +221,8 @@ async function unlikePost(likeID) {
   });
   const data = await response.json();
   console.log(data);
+
+  reloadPost(postID);
 }
 
 // TO SHOW MY PROFILE PHOTO AND USERNAME
@@ -236,7 +240,7 @@ async function showProfileHeader() {
 
   const headerEl = document.querySelector(".header");
   const headerContent = `
-    <img src="${data.thumb_url}" class="rounded-full w-16" />
+    <img src="${data.thumb_url}" class="rounded-full w-16" alt="profile image"/>
     <h2 class="font-Comfortaa font-bold text-2xl">${data.username}</h2>
     `;
   headerEl.insertAdjacentHTML("beforeend", headerContent);
@@ -254,6 +258,32 @@ async function showSuggestions() {
 
   const data = await response.json();
   console.log(data);
+
+  const suggestionEl = document.querySelector(".suggestions");
+
+  const suggestionInfo = data.map((suggestion) => {
+    return {
+      username: suggestion.username,
+      profile_img: suggestion.thumb_url,
+    };
+  });
+
+  suggestionInfo.forEach((suggestion) => {
+    suggestionEl.insertAdjacentHTML("beforeend", suggestionToHTML(suggestion));
+  });
+}
+
+function suggestionToHTML(suggestion) {
+  return `
+    <section class="flex justify-between items-center mb-4 gap-2">
+      <img src="${suggestion.profile_img}" class="rounded-full" alt="profile image" />
+      <div class="w-[180px]">
+          <p class="font-bold text-sm">${suggestion.username}</p>
+          <p class="text-gray-500 text-xs">suggested for you</p>
+      </div>
+      <button class="text-blue-500 text-sm py-2">follow</button>
+    </section>
+  `;
 }
 
 // GENERATE AND DISPLAYS STORIES SECTION
@@ -279,6 +309,7 @@ async function showStories() {
   });
 }
 
+// HELPER FUNCTION TO MAP ONLY THE NEEDED STORIES INFO
 function getStoriesInfo(data) {
   return {
     username: data.user.username,
@@ -286,16 +317,34 @@ function getStoriesInfo(data) {
   };
 }
 
+// CONVERT STORIES INFO TO HTML ELEMENT
 function storiesToHTML(storiesInfo) {
   return `
     <div class="flex flex-col justify-center items-center">
-      <img src="${storiesInfo.profileImg}" class="rounded-full border-4 border-gray-300 max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px]" />
+      <img src="${storiesInfo.profileImg}" class="rounded-full border-4 border-gray-300 max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px]" alt="profile image" />
       <p class="text-xs text-gray-500">${storiesInfo.username}</p>
     </div>
   `;
 }
 
-// max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px]
+// RELOAD POST ON CHANGE WITHOUT PAGE REFRESH
+async function reloadPost(postID) {
+  const response = await fetch(`${rootURL}/api/posts/${postID}/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  const data = await response.json();
+
+  const updatedPostHTML = postToHTML(data);
+
+  const post = document.querySelector(`#post-${postID}`);
+  post.outerHTML = updatedPostHTML;
+}
+
 // after all of the functions are defined,
 // invoke initialize at the bottom:
 initializeScreen();

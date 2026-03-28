@@ -604,14 +604,6 @@ video {
   display: none;
 }
 
-.h-\[30px\]{
-  height: 30px;
-}
-
-.h-\[50px\]{
-  height: 50px;
-}
-
 .max-h-\[50px\]{
   max-height: 50px;
 }
@@ -632,20 +624,12 @@ video {
   width: 100%;
 }
 
-.w-\[30px\]{
-  width: 30px;
-}
-
-.w-\[50px\]{
-  width: 50px;
+.min-w-\[50px\]{
+  min-width: 50px;
 }
 
 .min-w-\[80\%\]{
   min-width: 80%;
-}
-
-.min-w-\[50px\]{
-  min-width: 50px;
 }
 
 .max-w-\[50px\]{
@@ -682,10 +666,6 @@ video {
 
 .gap-6{
   gap: 1.5rem;
-}
-
-.overflow-hidden{
-  overflow: hidden;
 }
 
 .overflow-x-scroll{
