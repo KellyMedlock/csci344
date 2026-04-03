@@ -4,6 +4,24 @@ import Gallery from "./Gallery";
 import "./App.css";
 import { useState } from "react";
 
+const galleries2 = [
+    {
+        id: "cats",
+        name: "Cats",
+        endpoint: "https://www.apitutor.org/flickr/simple/?tags=cat"
+    },
+    {
+        id: "dogs",
+        name: "Dogs",
+        endpoint: "https://www.apitutor.org/flickr/simple/?tags=dog"
+    },
+    {
+        id: "birds",
+        name: "Birds",
+        endpoint: "https://www.apitutor.org/flickr/simple/?tags=bird"
+    }
+]
+
 const galleries = [
     {
         id: "nature",

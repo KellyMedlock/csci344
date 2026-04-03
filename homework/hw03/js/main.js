@@ -45,15 +45,15 @@ function postToHTML(post) {
         <section class="bg-white border mb-10" id="post-${post.id}">
             <div class="p-4 flex justify-between">
                 <h3 class="text-lg font-Comfortaa font-bold">${post.user.username}</h3>
-                <button class="icon-button"><i class="fas fa-ellipsis-h"></i></button>
+                <button class="icon-button" aria-label="settings button"><i class="fas fa-ellipsis-h"></i></button>
             </div>
             <img src="${post.image_url}" alt="post image" width="300" height="300" class="w-full bg-cover">
             <div class="p-4">
                 <div class="flex justify-between text-2xl mb-3">
                     <div>
                         ${getLikeButton(post)}
-                        <button><i class="far fa-comment"></i></button>
-                        <button><i class="far fa-paper-plane"></i></button>
+                        <button aria-label="comment button"><i class="far fa-comment"></i></button>
+                        <button aria-label="comment button"><i class="far fa-paper-plane"></i></button>
                     </div>
                     <div>
                         ${getBookmarkButton(post)}
@@ -72,7 +72,7 @@ function postToHTML(post) {
             <div class="flex justify-between items-center p-3">
                 <div class="flex items-center gap-3 min-w-[80%]">
                     <i class="far fa-smile text-lg"></i>
-                    <input type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment...">
+                    <input type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment..." aria-label="comment input">
                 </div>
                 <button class="text-blue-500 py-2">Post</button>
             </div>
@@ -153,15 +153,15 @@ async function bookmark(postID) {
 function getComments(post) {
   if (post.comments.length === 0) {
     return "";
-    // } else if (post.comments.length === 1) {
-    //   return `
-    //     <p class="text-sm mb-3">
-    //       <strong>${post.comments[0].user.username}</strong>
-    //       ${post.comments[0].text}
-    //     </p>
-    //   `;
+  } else if (post.comments.length === 1) {
+    return `
+      ${commentToHTML(post.comments[0])}
+    `;
   } else {
-    return post.comments.map(commentToHTML).join("");
+    return `
+      <button class="text-blue-500 mb-4" aria-label="view more comments button">view all ${post.comments.length} comments</button>
+      ${commentToHTML(post.comments[post.comments.length - 1])}
+    `;
   }
 }
 
