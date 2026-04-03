@@ -260,15 +260,30 @@ main section.tutorials ul li a:hover {
 /* ~~~ HOMEWORK RULES ~~~ */
 main section.homework {
     grid-column: 1 / 17;
-    height: calc(1vh * 100);
-    max-height: calc(1vw * 50);
+    /* height: calc(1vh * 100);
+    max-height: calc(1vw * 50); */
     min-height: calc(1vw * 30);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main section.homework ul {
+    width: 100%;
+}
+
+main section.homework ul li {
+    min-height: 100vh;
+    width: 100%;
+    border-bottom: 1px solid var(--SECONDARY900);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 main section.homework ul li a {
+    display: block;
     font-size: 2rem;
 }
 
