@@ -18,8 +18,8 @@ export default function Posts({ token }) {
     return (
         <div>
             {
-                posts.map((post) => <Post post={post} token={token} />)
-            };
+                posts.map((post, index) => <Post post={post} token={token} key={index} />)
+            }
         </div>
     );
 }

@@ -22,11 +22,11 @@ export default function App({ username, token }) {
                 <Posts token={token} />
 
                 {/* HTML Tips */}
-                <div className="p-8 mt-4 bg-yellow-50 rounded-md border border-yellow-200">
+                {/* <div className="p-8 mt-4 bg-yellow-50 rounded-md border border-yellow-200">
                     <h3 className="text-lg font-Comfortaa font-bold mb-3">HTML Tips</h3>
                     See <a href="/index-hw03.html" className="text-blue-500">index-hw03.html</a>{' '} 
                     for the original HTML (which you can use in your development).
-                </div>
+                </div> */}
 
             </main>
 

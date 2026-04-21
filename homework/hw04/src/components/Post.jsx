@@ -39,9 +39,9 @@ export default function Post({ post, token }) {
                 <div className="p-4">
                     <div className="flex justify-between text-2xl mb-3">
                         <div>
-                            <LikeButton post={post}/>
-                            <button aria-label="comment button"><i className="far fa-comment"></i></button>
-                            <button aria-label="comment button"><i className="far fa-paper-plane"></i></button>
+                            <LikeButton post={post} token={token} />
+                            <button aria-label="comment button"><i className="far fa-comment ml-2"></i></button>
+                            <button aria-label="comment button"><i className="far fa-paper-plane ml-2"></i></button>
                         </div>
                         <div>
                             <BookmarkButton post={post} token={token}/>

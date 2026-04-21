@@ -164,6 +164,7 @@ function getComments(post) {
     `;
   }
 }
+KeyboardEvent;
 
 // RENDER A COMMENT TO HTML
 function commentToHTML(comment) {

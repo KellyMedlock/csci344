@@ -588,6 +588,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.ml-2{
+  margin-left: 0.5rem;
+}
+
 .mt-4{
   margin-top: 1rem;
 }
@@ -602,6 +606,14 @@ video {
 
 .hidden{
   display: none;
+}
+
+.max-h-\[50px\]{
+  max-height: 50px;
+}
+
+.min-h-\[50px\]{
+  min-height: 50px;
 }
 
 .w-16{
@@ -620,8 +632,16 @@ video {
   min-width: 80%;
 }
 
+.min-w-\[50px\]{
+  min-width: 50px;
+}
+
 .max-w-\[300px\]{
   max-width: 300px;
+}
+
+.max-w-\[50px\]{
+  max-width: 50px;
 }
 
 .flex-col{
