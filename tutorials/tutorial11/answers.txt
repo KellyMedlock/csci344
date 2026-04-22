@@ -1,0 +1,15 @@
+1.) Brands, sneakers and orders are in both the app.db and in the api.config.yaml. Users is not defined in the yaml, but it is in the db tables.
+
+2.) The brand column in Sneakers is referencing data in other tables.
+
+3.) There doesn't seem to be any indicator within the app.db file to show what is required vs optional. In the yaml file, it has the required tag under the resource name.
+
+4.) I do not know
+
+5.) I do not know
+
+6.) The path went from /api/sneakers to /api/sneakers?brand=4 when I filtered by a specific brand.
+
+7.) /api/sneakers?name=running
+
+8.)
