@@ -6,10 +6,14 @@
 
 4.) I do not know
 
-5.) I do not know
+5.) I do not understand to be honest
 
 6.) The path went from /api/sneakers to /api/sneakers?brand=4 when I filtered by a specific brand.
 
 7.) /api/sneakers?name=running
 
-8.)
+8.) The difference between experimenting in the /api/docs and the data grid is that in the data grid I logged in where as in the /api/docs i had to paste my bearer token to authorize myself to edit things.
+
+9.) It eliminates having to type plant species multiple time. Allowing you to store the specicies only once and then reuse it over and over again.
+
+10.) For my final project I see myself needing a resource of made characters, which will include the data fields of user id, character id, class, level, name, race, background, ability scores(one for each, ie. Strength, dexterity, wisdom), modifiers, proficiency bonus, hit points(current, max, temp), armor class, speed, initiative, skills(one for each), saving throws, equipment, attacks, and spells. I think they should all be queryable? Still don't understand that part really. I will need a favorite resource for the user to filter their made characters by ones they have favorited, this will need the data fields of favorite id, user id, and characters id which will be referenced from the character resource. All queryable? A user resource, with data fields name, and hashpassword to allow for log in and storing of their characters so only they can access them. Not queryable?
