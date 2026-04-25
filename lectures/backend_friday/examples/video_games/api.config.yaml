@@ -1,0 +1,85 @@
+resources:
+  - type: VideoGame
+    path: /api/videogame
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: name
+        type: string
+        required: true
+        query: true
+      - name: developer
+        type: string
+        query: true
+      - name: photo
+        type: image_url
+        required: true
+    permissions:
+      list: public
+      retrieve: public
+      create: user
+      update: owner
+      delete: owner
+
+  - type: Note
+    path: /api/notes
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: video_game
+        type: VideoGame
+        required: true
+      - name: notes
+        type: text
+      - name: already_played
+        type: boolean
+    permissions:
+      list: public
+      retrieve: public
+      create: user
+      update: owner
+      delete: owner
+  - type: Favorite
+    path: /api/favorites
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: note
+        type: string
+      - name: sneaker
+        type: Sneaker
+        required: true
+        query: true
+    permissions:
+      list: owner
+      retrieve: owner
+      create: user
+      update: owner
+      delete: owner
+
+  - type: Order
+    path: /api/orders
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: customer_name
+        type: string
+        required: true
+      - name: email
+        type: string
+        required: true
+      - name: status
+        type: string
+        required: true
+        query: true
+      - name: total
+        type: number
+        required: true
+      - name: created_at
+        type: datetime
+      - name: sneaker
+        type: Sneaker
+        required: true
+        query: true
+    permissions:
+      list: owner
+      retrieve: owner
+      create: user
+      update: owner
+      delete: owner
