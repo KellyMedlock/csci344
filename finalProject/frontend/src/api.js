@@ -63,19 +63,19 @@ export async function getCharacters() {
 //   type: integer
 //   required: true
 
-const sampleData = {
-  character_name: "walter",
-  class_dnd: "barbarian",
-  race: "human",
-  background: "acolyte",
-  level: 1,
-};
+// const sampleData = {
+//   character_name: "walter",
+//   class_dnd: "barbarian",
+//   race: "human",
+//   background: "acolyte",
+//   level: 1,
+// };
 
-export async function createCharacter(data) {
-  const options = {
-    method: "POST",
-    body: JSON.stringify(data),
-  };
+// export async function createCharacter(data) {
+//   const options = {
+//     method: "POST",
+//     body: JSON.stringify(data),
+//   };
 
-  return await sendRequest("/api/characters", options);
-}
+//   return await sendRequest("/api/characters", options);
+// }

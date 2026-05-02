@@ -11,14 +11,14 @@ export default function Homepage({ username }) {
       setCharacters(data);
     }
     getData();
-      const sampleData = {
-      character_name: "walter",
-      class_dnd: "barbarian",
-      race: "human",
-      background: "acolyte",
-      level: 1,
-    };
-    createCharacter(sampleData);
+    // const sampleData = {
+    //   character_name: "walter",
+    //   class_dnd: "barbarian",
+    //   race: "human",
+    //   background: "acolyte",
+    //   level: 1,
+    // };
+    // createCharacter(sampleData);
   }, []);
 
   return (

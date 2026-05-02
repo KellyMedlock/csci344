@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function CreateCharacter() {
+export default function CreateCharacterEl() {
     return (
-        <div className="bg-[#AAACAD] min-h-max rounded-3xl shadow-2xl shadow-[#142F3880] m-9 flex flex-col overflow-hidden p-6 hidden">
+        <div className="bg-[#AAACAD] min-h-max rounded-3xl shadow-2xl shadow-[#142F3880] m-9 flex flex-col overflow-hidden p-6">
             <form action="submit" className="flex flex-col gap-10 items-center text-xl">
                 <div className="w-full flex justify-between">
                     <div>
