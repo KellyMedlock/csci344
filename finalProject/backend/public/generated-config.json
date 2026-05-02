@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "configPath": "C:\\Users\\edmed\\OneDrive\\Documents\\UNCA\\csci344\\finalProject\\backend\\examples\\dnd\\api.config.yaml",
+    "generatedAt": "2026-05-01T17:52:27.558Z",
+    "seedDir": "examples\\dnd"
+  },
+  "userResource": {
+    "type": "User",
+    "tableName": "users",
+    "fields": [
+      {
+        "name": "role",
+        "type": "string",
+        "storageType": "string",
+        "required": true,
+        "default": "user",
+        "choices": [
+          "user",
+          "admin"
+        ],
+        "relation": null,
+        "query": {
+          "param": "role",
+          "op": "eq"
+        }
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Character",
+      "tableName": "characters",
+      "fileBase": "characters",
+      "path": "/api/characters",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "character_name",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": {
+            "param": "character_name",
+            "op": "contains"
+          }
+        },
+        {
+          "name": "class_dnd",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "subclass_dnd",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "race",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "subrace",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "background",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "level",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        }
+      ],
+      "permissions": {
+        "list": "public",
+        "retrieve": "public",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "character_name",
+          "fieldName": "character_name",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
+          "relation": null,
+          "choices": null
+        },
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    },
+    {
+      "type": "Favorite",
+      "tableName": "favorites",
+      "fileBase": "favorites",
+      "path": "/api/favorites",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "character",
+          "type": "Character",
+          "storageType": "integer",
+          "required": true,
+          "relation": {
+            "resourceType": "Character",
+            "targetField": "id"
+          },
+          "query": null
+        }
+      ],
+      "permissions": {
+        "list": "owner",
+        "retrieve": "owner",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "apiVersion": "1",
+  "baseUrlEnv": "API_BASE",
+  "directory": "examples/plants-new",
+  "resources": [
+    {
+      "type": "Character",
+      "path": "/api/characters",
+      "file": "characters.csv"
+    },
+    {
+      "type": "Favorite",
+      "path": "/api/favorites",
+      "file": "favorites.csv"
+    }
+  ],
+  "usersFile": "users.csv",
+  "seedUserColumn": "seed_as"
+}
