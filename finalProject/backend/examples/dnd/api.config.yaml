@@ -9,7 +9,6 @@ resources:
       - name: character_name
         type: string
         required: true
-        query: true
       - name: class_dnd
         type: string
         required: true
@@ -27,8 +26,8 @@ resources:
         type: integer
         required: true
     permissions:
-      list: public
-      retrieve: public
+      list: owner
+      retrieve: owner
       create: user
       update: owner
       delete: owner

@@ -27,8 +27,8 @@ resources:
         type: integer
         required: true
     permissions:
-      list: public
-      retrieve: public
+      list: owner
+      retrieve: owner
       create: user
       update: owner
       delete: owner

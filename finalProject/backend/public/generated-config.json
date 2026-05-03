@@ -1,7 +1,7 @@
 {
   "meta": {
     "configPath": "C:\\Users\\edmed\\OneDrive\\Documents\\UNCA\\csci344\\finalProject\\backend\\examples\\dnd\\api.config.yaml",
-    "generatedAt": "2026-05-01T17:52:27.558Z",
+    "generatedAt": "2026-05-03T20:05:21.172Z",
     "seedDir": "examples\\dnd"
   },
   "userResource": {
@@ -103,8 +103,8 @@
         }
       ],
       "permissions": {
-        "list": "public",
-        "retrieve": "public",
+        "list": "owner",
+        "retrieve": "owner",
         "create": "user",
         "update": "owner",
         "delete": "owner"

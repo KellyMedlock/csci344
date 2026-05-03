@@ -10,7 +10,7 @@ export default function App() {
   const savedToken = getToken();
   const savedUsername = getUsername();
   const [hasToken, setHasToken] = useState(savedToken ? true : false);
-  const [pageType, setPageType] = useState("");
+  const [pageType, setPageType] = useState(savedToken ? "ListView": "");
 
   function handleLoggedIn() {
     setHasToken(true);
@@ -21,6 +21,10 @@ export default function App() {
     clearToken();
     setPageType("");
     setHasToken(false);
+  }
+
+  function back() {
+    setPageType("ListView");
   }
 
   if (!hasToken) {
@@ -52,7 +56,7 @@ export default function App() {
           <Navbar hasToken={hasToken} setHasToken={setHasToken} />
 
           <main className='w-full flex justify-center items-center my-auto'>
-            <CharacterSheet setPageType={setPageType} />
+            <CharacterSheet setPageType={setPageType} back={back} />
           </main>
         </div>
       </>
@@ -64,7 +68,7 @@ export default function App() {
           <Navbar hasToken={hasToken} setHasToken={setHasToken} />
 
           <main className='w-full flex justify-center items-center my-auto'>
-            <CreateCharacterEl setPageType={setPageType} />
+            <CreateCharacterEl setPageType={setPageType} back={back} />
           </main>
         </div>
       </>
