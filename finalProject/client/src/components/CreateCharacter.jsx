@@ -1,10 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
+import {createCharacter} from "../api.js";
 
 export default function CreateCharacterEl({ setPageType, back }) {
+    const [error, setError] = useState("");
+    
+    async function submitCharacterData(e) {
+        e.preventDefault();
+        setError("");
+
+        const formData = new FormData(e.currentTarget);
+
+        const newCharacter = {
+            character_name: formData.get("characterName"),
+            class_dnd: formData.get("class_dnd"),
+            race: formData.get("race"),
+            background: formData.get("background"),
+            level: Number(formData.get("level")),
+        };
+
+        console.log(newCharacter);
+
+        await createCharacter(newCharacter);
+        setPageType("ListView");
+    }
+
     return (
         <div className="bg-[#AAACAD] min-h-max rounded-3xl shadow-2xl shadow-[#142F3880] m-9 flex flex-col overflow-hidden p-6">
             <button onClick={back} type="button" className="absolute left-10 top-36 text-5xl hover:text-shadow-lg">{"<"}</button>
-            <form action="submit" className="flex flex-col gap-10 items-center text-xl">
+            <form onSubmit={submitCharacterData} action="submit" className="flex flex-col gap-10 items-center text-xl">
                 <div className="w-full flex justify-between">
                     <div>
                         <label htmlFor="characterName">Character Name: </label>
@@ -40,9 +63,9 @@ export default function CreateCharacterEl({ setPageType, back }) {
                 <div className="w-full flex justify-between gap-8">
                     <div>
                         <label htmlFor="classes">Class: </label>
-                        <select name="class" id="classes" className="bg-white rounded-md">
+                        <select name="class_dnd" id="class_dnd" className="bg-white rounded-md">
                             <option value="barbarian">Barbarian</option>
-                            <option value="druic">Druid</option>
+                            <option value="druid">Druid</option>
                         </select>
                     </div>
                     
@@ -50,7 +73,7 @@ export default function CreateCharacterEl({ setPageType, back }) {
                         <label htmlFor="races">Race: </label>
                         <select name="race" id="races" className="bg-white rounded-md">
                             <option value="human">Human</option>
-                            <option value="Dwarf">Dwarf</option>
+                            <option value="dwarf">Dwarf</option>
                         </select>
                     </div>
 

@@ -46,3 +46,11 @@ export async function createCharacter(data) {
 
   return await sendRequest("/api/characters", options);
 }
+
+export async function deleteCharacter(characterName) {
+  const options = {
+    method: "DELETE",
+  };
+
+  return await sendRequest(`/api/characters/${characterName}`, options);
+}
