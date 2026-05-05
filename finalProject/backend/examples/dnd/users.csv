@@ -1,7 +1,7 @@
 id,username,password,role,seed_as
 1,admin,password,admin,yes
-2,svanwart,password,user,no
-3,me,password,admin,no
-4,samson,password,user,no
-5,myra,password,user,no
-6,steven,password,user,no
+2,svanwart,password,user,yes
+3,me,password,admin,yes
+4,samson,password,user,yes
+5,myra,password,user,yes
+6,steven,password,user,yes

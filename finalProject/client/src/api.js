@@ -38,6 +38,10 @@ export async function getCharacters() {
   return await sendRequest("/api/characters");
 }
 
+export async function getCharacterById(characterID) {
+  return await sendRequest(`/api/characters/${characterID}`);
+}
+
 export async function createCharacter(data) {
   const options = {
     method: "POST",
@@ -47,10 +51,22 @@ export async function createCharacter(data) {
   return await sendRequest("/api/characters", options);
 }
 
-export async function deleteCharacter(characterName) {
+export async function deleteCharacter(characterID) {
   const options = {
     method: "DELETE",
   };
 
-  return await sendRequest(`/api/characters/${characterName}`, options);
+  return await sendRequest(`/api/characters/${characterID}`, options);
+}
+
+export async function updateCharacter(characterID, updatedCharacter) {
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedCharacter),
+  };
+
+  return await sendRequest(`/api/characters/${characterID}`, options);
 }

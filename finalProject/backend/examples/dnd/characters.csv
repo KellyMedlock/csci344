@@ -1,6 +1,6 @@
-id,owner_id,character_name,class_dnd,subclass_dnd,race,subrace,background,level,
-1,3,blah,barbarian,,human,,acolyte,1,
-2,3,blah,barbarian,,human,,acolyte,1,
-3,3,blah,barbarian,,human,,acolyte,1,
-4,3,blah,barbarian,,human,,acolyte,1,
-5,3,blah,barbarian,,human,,acolyte,1,
+id,owner_id,character_name,class_dnd,subclass_dnd,race,subrace,background,level,character_stats
+1,3,blah,barbarian,,human,,acolyte,1,1
+2,3,blah2,barbarian,,human,,acolyte,1,2
+3,3,blah3,barbarian,,human,,acolyte,1,3
+4,3,blah4,barbarian,,human,,acolyte,1,4
+5,3,blah5,barbarian,,human,,acolyte,1,5

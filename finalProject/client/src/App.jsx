@@ -11,6 +11,7 @@ export default function App() {
   const savedUsername = getUsername();
   const [hasToken, setHasToken] = useState(savedToken ? true : false);
   const [pageType, setPageType] = useState(savedToken ? "ListView": "");
+  const [selectedCharacterId, setSelectedCharacterId] = useState(null);
 
   function handleLoggedIn() {
     setHasToken(true);
@@ -44,7 +45,7 @@ export default function App() {
           <Navbar hasToken={hasToken} setHasToken={setHasToken} />
 
           <main className='w-full flex justify-center items-center my-auto'>
-            <Listview setPageType={setPageType} />
+            <Listview setPageType={setPageType} setSelectedCharacterId={setSelectedCharacterId} />
           </main>
         </div>
       </>
@@ -56,7 +57,7 @@ export default function App() {
           <Navbar hasToken={hasToken} setHasToken={setHasToken} />
 
           <main className='w-full flex justify-center items-center my-auto'>
-            <CharacterSheet setPageType={setPageType} back={back} />
+            <CharacterSheet setPageType={setPageType} back={back} characterId={selectedCharacterId} />
           </main>
         </div>
       </>

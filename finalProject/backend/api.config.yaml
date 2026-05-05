@@ -2,6 +2,35 @@
 # Copy this file to the project root as api.config.yaml (backup the default first if you want).
 
 resources:
+  - type: Characterstats
+    path: /api/characterstats
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: strength
+        type: integer
+        required: true
+      - name: dexterity
+        type: integer
+        required: true
+      - name: constitution
+        type: integer
+        required: true
+      - name: intelligence
+        type: integer
+        required: true
+      - name: wisdom
+        type: integer
+        required: true
+      - name: charisma
+        type: integer
+        required: true
+    permissions:
+      list: owner
+      retrieve: owner
+      create: user
+      update: owner
+      delete: owner
+
   - type: Character
     path: /api/characters
     operations: [list, retrieve, create, update, delete]
@@ -9,7 +38,6 @@ resources:
       - name: character_name
         type: string
         required: true
-        query: true
       - name: class_dnd
         type: string
         required: true
@@ -26,6 +54,11 @@ resources:
       - name: level
         type: integer
         required: true
+      - name: character_stats
+        type: Characterstats
+        required: true
+      - name: proficencies
+        type: string
     permissions:
       list: owner
       retrieve: owner

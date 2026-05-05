@@ -4,6 +4,11 @@
   "directory": "examples/plants-new",
   "resources": [
     {
+      "type": "Characterstats",
+      "path": "/api/characterstats",
+      "file": "characterstats.csv"
+    },
+    {
       "type": "Character",
       "path": "/api/characters",
       "file": "characters.csv"

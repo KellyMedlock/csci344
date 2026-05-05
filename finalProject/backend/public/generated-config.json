@@ -1,7 +1,7 @@
 {
   "meta": {
     "configPath": "C:\\Users\\edmed\\OneDrive\\Documents\\UNCA\\csci344\\finalProject\\backend\\examples\\dnd\\api.config.yaml",
-    "generatedAt": "2026-05-03T20:05:21.172Z",
+    "generatedAt": "2026-05-05T14:25:15.357Z",
     "seedDir": "examples\\dnd"
   },
   "userResource": {
@@ -28,6 +28,88 @@
   },
   "resources": [
     {
+      "type": "Characterstats",
+      "tableName": "characterstatses",
+      "fileBase": "characterstatses",
+      "path": "/api/characterstats",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "strength",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "dexterity",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "constitution",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "intelligence",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "wisdom",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "charisma",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        }
+      ],
+      "permissions": {
+        "list": "owner",
+        "retrieve": "owner",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    },
+    {
       "type": "Character",
       "tableName": "characters",
       "fileBase": "characters",
@@ -48,10 +130,7 @@
           "storageType": "string",
           "required": true,
           "relation": null,
-          "query": {
-            "param": "character_name",
-            "op": "contains"
-          }
+          "query": null
         },
         {
           "name": "class_dnd",
@@ -100,6 +179,25 @@
           "required": true,
           "relation": null,
           "query": null
+        },
+        {
+          "name": "character_stats",
+          "type": "Characterstats",
+          "storageType": "integer",
+          "required": true,
+          "relation": {
+            "resourceType": "Characterstats",
+            "targetField": "id"
+          },
+          "query": null
+        },
+        {
+          "name": "proficencies",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": null
         }
       ],
       "permissions": {
@@ -110,15 +208,6 @@
         "delete": "owner"
       },
       "queryFilters": [
-        {
-          "param": "character_name",
-          "fieldName": "character_name",
-          "op": "contains",
-          "type": "string",
-          "storageType": "string",
-          "relation": null,
-          "choices": null
-        },
         {
           "param": "owner_id",
           "fieldName": "owner_id",
