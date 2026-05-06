@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getApiBaseUrl } from '../api.js';
 import { setToken, setUsername as storeUsername } from '../tokenStorage.js';
+import Logo from "../assets/Logo.png";
 
 export default function Login({ handleLoggedIn }) {
     const [username, setUsername] = useState("");
@@ -35,7 +36,7 @@ export default function Login({ handleLoggedIn }) {
     
     return(
         <div className='bg-[#AAACAD] flex flex-col items-center py-20 px-12 rounded-3xl shadow-2xl shadow-[#59D5FFC0] text-[#091519]'>
-            <img src="" alt="logo" className='w-24 h-24 border mb-14' />
+            <img src={Logo} alt="logo" className='w-40 h-40 mb-14' />
             <form 
                 action="submit" 
                 className='flex flex-col items-center gap-9'
