@@ -56,7 +56,7 @@ resources:
         required: true
       - name: character_stats
         type: Characterstats
-        required: true
+        required: false
       - name: proficencies
         type: string
     permissions:

@@ -1,7 +1,7 @@
 {
   "meta": {
     "configPath": "C:\\Users\\edmed\\OneDrive\\Documents\\UNCA\\csci344\\finalProject\\backend\\examples\\dnd\\api.config.yaml",
-    "generatedAt": "2026-05-05T14:25:15.357Z",
+    "generatedAt": "2026-05-05T18:28:54.419Z",
     "seedDir": "examples\\dnd"
   },
   "userResource": {
@@ -184,7 +184,7 @@
           "name": "character_stats",
           "type": "Characterstats",
           "storageType": "integer",
-          "required": true,
+          "required": false,
           "relation": {
             "resourceType": "Characterstats",
             "targetField": "id"

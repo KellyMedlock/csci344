@@ -1,8 +1,25 @@
 import React, {useState} from "react";
-import {createCharacter} from "../api.js";
+import {createCharacter, createCharacterStats} from "../api.js";
 
 export default function CreateCharacterEl({ setPageType, back }) {
     const [error, setError] = useState("");
+    const statOptions = [15, 14, 13, 12, 10, 8];
+    const [stats, setStats] = useState({
+        strength: null,
+        dexterity: null,
+        constitution: null,
+        intelligence: null,
+        wisdom: null,
+        charisma: null,
+    });
+    const [bonuses, setBonuses] = useState({
+        strength: [false, false],
+        dexterity: [false, false],
+        constitution: [false, false],
+        intelligence: [false, false],
+        wisdom: [false, false],
+        charisma: [false, false],
+    });
     
     async function submitCharacterData(e) {
         e.preventDefault();
@@ -10,18 +27,86 @@ export default function CreateCharacterEl({ setPageType, back }) {
 
         const formData = new FormData(e.currentTarget);
 
-        const newCharacter = {
-            character_name: formData.get("characterName"),
-            class_dnd: formData.get("class_dnd"),
-            race: formData.get("race"),
-            background: formData.get("background"),
-            level: Number(formData.get("level")),
-        };
+        try {
+            const newStats = {
+                strength: getFinalStat("strength"),
+                dexterity: getFinalStat("dexterity"),
+                constitution: getFinalStat("constitution"),
+                intelligence: getFinalStat("intelligence"),
+                wisdom: getFinalStat("wisdom"),
+                charisma: getFinalStat("charisma"),
+            };
 
-        console.log(newCharacter);
+            const hasUnassignedStats = Object.values(stats).some((value) => value === null);
 
-        await createCharacter(newCharacter);
-        setPageType("ListView");
+            if (hasUnassignedStats) {
+                setError("Please assign a value to every stat.");
+                return;
+            }
+
+            const createdStats = await createCharacterStats(newStats);
+
+            const newCharacter = {
+                character_name: formData.get("characterName"),
+                class_dnd: formData.get("class_dnd"),
+                race: formData.get("race"),
+                background: formData.get("background"),
+                level: Number(formData.get("level")),
+                character_stats: createdStats.id,
+            };
+
+            await createCharacter(newCharacter);
+            setPageType("ListView");
+        } catch (err) {
+            setError(err.message);
+        }
+    }
+
+    function updateStat(statName, newValue) {
+        const selectedValue = Number(newValue);
+
+        setStats((prev) => {
+            const oldValue = prev[statName];
+
+            const statAlreadyUsingValue = Object.keys(prev).find(
+                (key) => key !== statName && prev[key] === selectedValue
+            );
+
+            if (statAlreadyUsingValue) {
+                return {
+                    ...prev,
+                    [statName]: selectedValue,
+                    [statAlreadyUsingValue]: oldValue,
+                };
+            }
+
+            return {
+                ...prev,
+                [statName]: selectedValue,
+            };
+        });
+    }
+
+    function toggleBonus(statName, index) {
+        setBonuses((prev) => ({
+            ...prev,
+            [statName]: prev[statName].map((checked, i) =>
+                i === index ? !checked : checked
+            ),
+        }));
+    }
+
+    function getFinalStat(statName) {
+        if (stats[statName] === null) return "";
+
+        const bonusAmount = bonuses[statName].filter(Boolean).length;
+        return stats[statName] + bonusAmount;
+    }
+
+    function isOptionDisabled(statName, option) {
+        return Object.entries(stats).some(
+            ([otherStat, value]) => otherStat !== statName && value === option
+        );
     }
 
     return (
@@ -65,7 +150,18 @@ export default function CreateCharacterEl({ setPageType, back }) {
                         <label htmlFor="classes">Class: </label>
                         <select name="class_dnd" id="class_dnd" className="bg-white rounded-md">
                             <option value="barbarian">Barbarian</option>
+                            <option value="bard">Bard</option>
+                            <option value="cleric">Cleric</option>
                             <option value="druid">Druid</option>
+                            <option value="fighter">Fighter</option>
+                            <option value="monk">Monk</option>
+                            <option value="paladin">Paladin</option>
+                            <option value="ranger">Ranger</option>
+                            <option value="rogue">Rogue</option>
+                            <option value="sorcerer">Sorcerer</option>
+                            <option value="warlock">Warlock</option>
+                            <option value="wizard">Wizard</option>
+                            {/* <option value="artificer">Artificer</option> */}
                         </select>
                     </div>
                     
@@ -83,6 +179,54 @@ export default function CreateCharacterEl({ setPageType, back }) {
                             <option value="acolyte">Acolyte</option>
                         </select>
                     </div>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    {Object.keys(stats).map((statName) => (
+                        <div key={statName} className="flex flex-col bg-white p-3 rounded-md">
+                            <label className="capitalize font-bold">{statName}</label>
+
+                            <select
+                                value={stats[statName] ?? ""}
+                                onChange={(e) => updateStat(statName, e.target.value)}
+                                className="border rounded-md"
+                                required
+                            >
+                                <option value="" disabled>
+                                    Select stat
+                                </option>
+
+                                {statOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+
+                            <div className="flex gap-3 mt-2">
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={bonuses[statName][0]}
+                                        onChange={() => toggleBonus(statName, 0)}
+                                    />
+                                    +1
+                                </label>
+
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={bonuses[statName][1]}
+                                        onChange={() => toggleBonus(statName, 1)}
+                                    />
+                                    +1
+                                </label>
+                            </div>
+
+                            <p className="text-sm mt-1">
+                                Final: {getFinalStat(statName)}
+                            </p>
+                        </div>
+                    ))}
                 </div>
                 <button type="submit" className="cursor-pointer w-fit bg-white rounded-md px-4 py-1 hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-none">Save</button>
             </form>

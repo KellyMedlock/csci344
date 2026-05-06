@@ -59,6 +59,20 @@ export async function deleteCharacter(characterID) {
   return await sendRequest(`/api/characters/${characterID}`, options);
 }
 
+export async function deleteCharacterAndFavorites(characterId) {
+  const favorites = await getFavorites();
+
+  const matchingFavorites = favorites.filter(
+    (favorite) => favorite.character?.id === characterId,
+  );
+
+  for (const favorite of matchingFavorites) {
+    await deleteFavorite(favorite.id);
+  }
+
+  return await deleteCharacter(characterId);
+}
+
 export async function updateCharacter(characterID, updatedCharacter) {
   const options = {
     method: "PATCH",
@@ -69,4 +83,33 @@ export async function updateCharacter(characterID, updatedCharacter) {
   };
 
   return await sendRequest(`/api/characters/${characterID}`, options);
+}
+
+export async function createCharacterStats(data) {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+  };
+
+  return await sendRequest("/api/characterstats", options);
+}
+export async function getFavorites() {
+  return await sendRequest("/api/favorites");
+}
+
+export async function createFavorite(characterId) {
+  const options = {
+    method: "POST",
+    body: JSON.stringify({ character: characterId }),
+  };
+
+  return await sendRequest("/api/favorites", options);
+}
+
+export async function deleteFavorite(favoriteId) {
+  const options = {
+    method: "DELETE",
+  };
+
+  return await sendRequest(`/api/favorites/${favoriteId}`, options);
 }
